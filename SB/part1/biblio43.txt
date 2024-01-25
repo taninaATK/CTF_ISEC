@@ -1,0 +1,22 @@
+Aucune RFC ne spécifie la signature de Lamport, car elle est rarement utilisée
+telle quelle.  Elle est néanmoins très facile à implanter.  Une implantation 
+open-source se trouve à la fin de ce document.
+
+Une clef (privée ou publique) se compose 512 chaines de 256 bits concatanées. 
+On note K[i] la  i-ème de ces chaines, pour 0 <= i < 512.  Pour générer une 
+paire de clefs, on tire la clef secrète entièrement au hasard.  La clef publique
+est obtenue en posant : pk[i] = sha256(sk[i]).
+
+Une signature sig est une séquence de 256 chaînes de 64 caractères hexadécimaux.
+
+Pour signer un message M, on applique la procédure suivante :
+1. [Hachage.]          Calculer : h <--- SHA256(M)
+2. [Assemblage.]       Pour tout 0 <= i < 256:
+                           soit b le i-ème bit de h
+                           sig[i] <--- sk[2*i + b]
+
+Pour vérifier une signature S d'un message M, on effectue la procédure suivante :
+1. [Hachage.]          Calculer : h <--- SHA256(M)
+2. [Vérification.]     Pour tout 0 <= i < 256:
+                           soit b le i-ème bit de h
+                           si pk[2 * i + b] != sha256(S[i]), alors échouer

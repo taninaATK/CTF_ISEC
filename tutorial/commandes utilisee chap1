@@ -1,0 +1,27 @@
+Pour le flag 1/4 :
+openssl enc -d -base64 -aes-128-cbc -pbkdf2 -pass pass:"ISECR0XX" -in in.txt
+
+Pour le flag 2/4 :
+5a 47 54 9f 46 48 4b 24-5d ef ed f7 d0 6d 40 be   01 a6 d8 14 64 4c f8 2f-19 d5 5d 59 da e8 ed b9   ....dL./..]Y....
+  5f ac 6f 4a 52 80 7e fe-c0 ca 44 9e 0b 4e 20 66     ad ee 3d 75 f7 14 98 98-93 ba 2a 14 29 22 0e 24   
+  af 40 4a 9f 63 5f 7e 4e-74 17 a9 31 ff 70 c9 d6   
+  f5 1d ab e4 44 14 f9 7f-9f 50 fb fd 1c b7 97 7f   
+  1d eb 6e 3d ea 8e 2c 5f-51 97 fb 4d ab d9 1c 64   
+  0c 17 db 26 58 cd 47 3f-c6 ce 70 89 7c 77 9d 39   
+  fc 82 c3 2d fe 3f 3c 6f-c2 05 ac 0c 21 da db 0a   
+  3b 23 da c1 10 f0 76 61-37 47 ab 3a 01 2d 91 24   
+  01 2b 84 84 a9 87 18 86-4e eb 25 00 e9 af 34 6e   
+  7e 2b 53 ba 6b 82 83 39-71 08 78 5d b2 61 e6 7d   
+  94 51 0b 77 b2 83 c2 f1-46 8f a5 1c c1 8e 55 09   
+  54 36 7f 13 68 91 69 6e-ba 7b 47 d9 a3 35 22 d3   
+  a2 6b 2b cd 54 cc cb ef-78 30 5b cc e2 f3 0a 2f   
+  2b 74 ba 77 be 0d 7f ef-92 a6 4c 8a 5f 8e f9 42   
+
+Génération de la clé privée >= 2048 bits
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+
+Génération de la clé publique associée
+openssl pkey -in privatekey -pubout
+
+Pour le flag 3/4 :
+openssl dgst -sha256 -hex -sign privatekey (puis on écrit sur le terminal les données à signer)

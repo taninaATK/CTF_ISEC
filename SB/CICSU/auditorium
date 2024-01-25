@@ -1,0 +1,22 @@
+DIRECTOR's PUBLIC-KEY:
+                    -----BEGIN PUBLIC KEY-----
+                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvtbNyPFC1hhUtr3cb56z
+                    a7v05dq3cgckAHgpPDhOtT1OOgsvJQ1t0RkkSJc7JQ1WNRchjJChLARH9bMd83QQ
+                    2KLiFXPA8FqKqZJBFHCAU7CIeNO1PM01ujUWwCw2ktBIrUbpi3++E6mbRnD8yW3V
+                    HnoEo9qTSTq1tbD/eud3CNdPjJZBElI/7VnBvclJv+okj/CjkoUwKwKSprjeI/mK
+                    kgE1zxtWYOFutP3bsktDEu9cWfSgKmff8rKKbRsMPjlCwXNvqkOpTwmV4EvabIc6
+                    HLr2aFQkGWq8YYXT5A/BzCdvrnLeBGXZdI5ut+FltigApT8sZ+RpPMkrN6nuS8RJ
+                    6QIDAQAB
+                    -----END PUBLIC KEY-----
+
+WARNING: - This prototype is INCOMPLETE.
+WARNING: - It does not fully implement RSA PKCS#1 v1.5.
+WARNING: - Here is what it actually does:
+WARNING:   - read the input as a hex-encoded number (big-endian)
+WARNING:   - run the IA decision algorithm on the input
+WARNING:   - raise it power d modulo N (d is the secret key)
+WARNING:   - print the result in hex (big-endian)
+WARNING: - This does not produce valid OpenSSL signatures
+WARNING:   out of the box because the padding is not applied
+
+=======================================================================

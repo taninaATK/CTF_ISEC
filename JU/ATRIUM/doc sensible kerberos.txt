@@ -1,0 +1,133 @@
+REMOTE PROCEDURE CALLS
+======================
+
+Les firmwares déployés sur le campus peuvent intéragir avec l'infrastructure du
+réseau via des Remote Procedure Calls pour invoquer des "méthodes distances" 
+côté serveur.  De nombreux objets invoquent des méthodes distantes pour assurer
+leur fonctionnement.
+
+Certains firmwares ont des modes de mise au point qui affichent les traces
+d'exécution des méthodes distantes invoquées.
+
+L'invocation de méthodes distantes repose sur le protocole JSON-RPC version 2.0, 
+qui est très simple et que tout un chacun peut consulter ici :
+
+	https://www.jsonrpc.org/specification
+
+
+Sur le campus, toutes les requêtes doivent être envoyées à l'adresse :
+
+	http://isec.sfpn.net/jsonrpc
+
+
+Il n'y a pas de catalogue global des méthodes disponibles.  Cependant, les
+méthodes suivantes peuvent être invoquées (notamment lors de la mise au point de
+clients) :
+
+- echo
+- man
+- server.status
+- server.history
+
+
+KERBEROS
+========
+
+L'accès à certaines méthodes est sécurisé par un système inspiré du protocole
+Kerberos (``Cerbère''). Les échanges avec les méthodes protégées sont chiffrées.  
+Un contrôle d'accès est également mis en place.  Voici un rapide survol du protocole.
+
+Les utilisateurs obtiennent des "tickets", c'est-à-dire des chaines de bits qui
+démontrent leur identité.  Pour invoquer une méthode protégée, les utilisateurs
+doivent fournir un ticket valable démontrant leur identité ainsi que leur droit
+à utiliser la méthode en question.  Les tickets contiennent aussi des clefs de
+session chiffrées.
+
+Ces tickets sont délivrés par une méthode spéciale, le "Ticket-Granting Service"
+(TGS).  Cette méthode délivre (ou pas) des tickets pour chacune des méthodes
+protégées en fonction des privilège de l'utilisateur.  En effet, l'accès à 
+certaines méthodes particulièrement sensibles est réservé.
+
+Pour obtenir des tickets auprès du Ticket Granting Service, les utilisateurs
+doivent lui démontrer leur identité.  Pour cela, ils doivent lui fournir un
+"Ticket-Granting Ticket" (TGT, littéralement, un ticket qui permet d'obtenir des
+tickets...).  Les utilisateurs peuvent l'obtenir auprès d'une autre méthode
+spéciale, l'"Authentication Service". 
+
+
+CHIFFREMENT
+-----------
+
+Dans tout le protocole Kerberos, le chiffrement s'effectue de manière standard
+avec l'AES-128-CBC. On fournit comme d'habitude des mots de passe à OpenSSL qui
+se débrouille pour en tirer une clef et un IV.
+
+
+AUTHENTIFICATEURS
+-----------------
+
+Lors des différentes phases, il faut parfois envoyer un "authenticateur". 
+Il s'agit d'un dictionnaire encodé en JSON et chiffré, contenant deux champs :
+  - username
+  - timestamp (secondes écoulées depuis le début de l'ère UGLIX).
+
+Par exemple, un utilisateur "toto" produira des authenticateur du type :
+    
+>>> import time
+>>> d = {'username': 'toto', 'timestamp': time.time()}
+>>> e = json.dumps(d)
+>>> f = openssl.encrypt(e, 'foobar')
+>>> print(f)
+U2FsdGVkX1+GlZdaiHbnPN1wsolvQt1/Tt9IMnNvdy0Vrbu9wzWVnLkrU2/hbhZo
+eYJF/F7IfT0QV4UKZ/9zfBORSDkRkdTumIj1bwuZEjw=
+
+
+AUTHENTIFICATION 
+----------------
+
+On initie le processus en invoquant la méthode "kerberos.authentication-service"
+avec un argument <username>.
+
+On reçoit en retour un dictionnaire avec deux champs :
+  - ticket-granting-ticket
+  - TGS-session-key
+    
+La <TGS session key> est chiffré le mot de passe de l'utilisateur et sert à
+sécuriser les échanges avec le Ticket-Granting Service.
+
+
+OBTENTION D'UN TICKET
+---------------------
+
+Pour exécuter une méthode protégée par Kerberos, il faut au préalable obtenir
+un ticket pour cette méthode.  Pour cela, il faut exécuter la méthode distante
+"kerberos.ticket-granting-service".  Il faut spécifier trois paramètres :
+  - TGT           : le <Ticket-Granting Ticket> qu'on a reçu
+  - method        : le nom de la méthode que l'on souhaite invoquer
+  - authenticator : un authenticateur chiffré avec la <TGS session key>
+
+On reçoit un dictionnaire qui a deux champs :
+  - method-ticket
+  - method-session-key
+
+La <method session key> est chiffrée avec la <TGS session key>. Il faut la
+déchiffrer avant de pouvoir l'utiliser.
+
+
+EXÉCUTION DE LA MÉTHODE DISTANTE DÉSIRÉE
+----------------------------------------
+
+Muni du ticket, on peut exécuter une méthode distante protégée par Kerberos.
+Il faut d'abord encoder ses arguments dans un dictionnaire JSON <args> puis
+exécuter la méthode distante avec 3 arguments :
+  - ticket         : le <method ticket>
+  - authenticator  : un authenticateur chiffré avec la <method session key>
+  - encrypted_args : <args> chiffré avec la <method session key>
+
+La valeur de retour de la méthode est du JSON chiffré avec la <method session key>.
+
+
+MISE AU POINT
+-------------
+Il y a une méthode protégée par kerberos qui peut être utile lors de la mise au
+point : "kerberos.echo".

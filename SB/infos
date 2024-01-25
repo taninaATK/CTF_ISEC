@@ -1,0 +1,9 @@
+username : tanina
+mdp : Tanina77
+
+To complete the tutorial, take the following steps:
+                    1. Read the openssl documentation manual
+                    2. Fetch the public key of user "pki_tutorial"
+                    3. Encrypt the string "I got it!" with this public-key
+                    4. Submit the (hex-encoded) ciphertext below
+

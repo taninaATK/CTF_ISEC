@@ -1,0 +1,42 @@
+Bureau RC-07 (équipe DEV): ibrown et rossjessica
+
+>>> conseil
+Si vous voulez de l'aide pour entrer dans le bureau, interrogez-moi à propos de la serrure.
+
+>>> conseil serrure
+Votre carte d'étudiant doit pouvoir être lue par ce dispositif.
+
+>>> conseil serrure
+Avez-vous fouillé les environs ?  Vous allez trouver quelque chose d'utile.
+
+>>> conseil serrure
+Vous pouvez essayer avec la clef perdue par un des deux occupants.  Si ça ne
+marche pas, alors il vous faut réussir à vous faire passer pour l'AUTRE occupant.
+
+
+>>> conseil serrure
+Le ``mémento'' explique que les occupants du même bureau doivent avoir le même N.
+
+>>> conseil serrure
+Comme vous avez le d de l'un des deux, vous pouvez factoriser leur N commun.
+
+>>> conseil serrure
+(c'est dans les diapos du cours)
+
+>>> conseil serrure
+De là, vous pouvez obtenir le d de l'autre.
+
+
+username: ibrown
+d       : 6047ce49f1a7f2739ecf14bbd35b23db20e8c9ce5e6743d33adc029cfbd7797a2e83c7685cf48396621d2fd2610bcfd51de5511605c75f40b96ae65f1d9213888c11d81792137a410282d882c5d0c984081fa2bb95e6a53dcf832b98c6f5295c770c8c7b03fb007e6c8ce6ccb2d811aec53154393a4d3042fdb30a3c3616e903a1dc84c60db84448e25c47fdd0615b36caa767a46ae69ee0d560e2d00cc179fc8e1a82bde5628d06c352dd891e423009da01f92a241ad4ff5fa7041651d45c72524ce97f91019005e8ce307a91705ccdc57ecc848814af9b7506991b45dc522cbb4fb3425a3657b3bfbb9338fda594831a2ff510d983b16fdf7cb0b5c2ae6819
+
+Public key ibrown :
+-----BEGIN PUBLIC KEY-----
+    MIIBQDANBgkqhkiG9w0BAQEFAAOCAS0AMIIBKAKCAQEAyGIeYXC7H70C13hemIPe
+    qxyRnPiI9U/iAOTwZwv6z9wiO48Myws72NOzvaNJqEIO2NOcPKEIpZtEVzhx9Wkh
+    qzup/dDHE42QLsmVbCY9OpbooZwKKxa8T2nxhUMApOQ2m4Z0sctuOZL+tBzyAKQC
+    +t6cGgezJN5dxEfota6IAs6mn4ytKQzlqgDCxFWz8+uPXx8TZTs0hKXcgH+CBPqQ
+    RdgvcPzG1MrBzQwI8KGX9FZR/9lmROPpaGqhv1RNPJQTSOk4bR0IQajTlU1W3xmO
+    jYGVoHfNGUAI+sAdaOVt7dxbCDFik+XORrCA+lL7FiOBU6NfnMCoRexp/oQCX1My
+    qwIhAP9CMnKadW820ijoIqLrLZ0AAAAAAAA+++ATRIUM+++B
+-----END PUBLIC KEY-----

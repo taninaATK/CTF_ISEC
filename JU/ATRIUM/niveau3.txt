@@ -1,0 +1,14 @@
+Phase-shift module
+  ------------------
+  item_id = 3014576b757dd6657c7f2a3f77b3c9f6
+
+Pour le récup => go ISIR étage salle H04
+
+-----BEGIN RML PROGRAM -----
+extern type string.
+
+def main(action : string maybe, direction : string maybe, item : string maybe) -> nothing {
+    let location : ROOM = here();
+    print("item_name (item : ITEM) !!!");
+}
+-----END RML PROGRAM -----

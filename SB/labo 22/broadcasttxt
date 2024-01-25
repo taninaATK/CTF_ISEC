@@ -1,0 +1,44 @@
+Bonjour,
+
+Je suis un programme que mon créateur a conçu pour limiter le flux entrant de
+spam.  Conçu dans la philosophie UNIX, je ne fais qu'UNE chose, mais mais je la
+fais bien : je laisse passer uniquement les messages qui respectent quelques
+règles simples.
+
+La première de ces règles, que vous ne respectez pas, est de m'écrire avec la
+technique du chiffrement hybride.  Si vous ne la connaissez pas, vous pouvez
+consulter la littérature idoine à la bibliothèque.  Voici ce qui ne va pas :
+- JSON parse error
+
+Ma clef publique est :
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2o0Omjz8JlgQ3lHwMXjP
+4QV4UYf+O+uPY5soyICgWE/ry5R6I0tLC/rlTAw+O8sw/lkrz7lCDEhaB1hqCenK
+VLxNf2f5DjZio2png2lvWpE1jq93elAFjxavbaDjG2eSb+GJIddAaZNe0KrOTAe+
+Rsx1Ulw1Xb3Ub5Ui28ZS/+JQmL2qyV1YfWBx3xSYTSPthzlzTRK9PlyRd448q5bR
+SpRYir8XMpSjyM0N+DGitcYnXsBes9umF8qJ0Ew1V2tvVLjQoLzUbA+9+7L4CXLW
+XUrVhnjlNDGvp6SRHJojyArjSqG4yEhFUVe/TB3q10iJ3jTblxQ19obvuCy6Z2tn
+NwIDAQAB
+-----END PUBLIC KEY-----
+
+
+Bien cordialement,
+---
+e-secretary v0.4
+
+
+
+{
+    "session-key":"9e257cefe143e6fcf02e4cc3405ddd1cf52153ce9883a386f0b37a043e664963992f7422f41e897576e1226c30006f33adbdb1b1bf8c802e01fb67a1916368c51be3c307837d757a11b0acb55adf42b2cc025f357d0e84bd8fdf179bd89c638798d89104cf58b0148aaecbb057fd095273960921a496189aeeb65d6d355998d64b718ed884d88aeac467c1ab810042b1ed2fd8cd1dca5a0f92cda86f4e67c7e315269d44cdaa65e1c989d683ad7773b32284fb67b6655c0696d73fe9979eb3c652940536a0de83a2dc25177f94dcd35b81465c8d424893d1eb85a91d123683c0f4a56edde46fffc29fca451aeee7c8415ef8a8ed655df23a23d92358b3b8fcbe",
+    "ciphertext":"U2FsdGVkX1+nwOnhZn4oqloYcn5wkyXnhuwWvdwTfwg=\n"
+}
+
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0S/Dsh3qReVCxVVaXJEQ
+STACPNUWkjirF3pAAH5Fmg9/py3DzGhx2d5VkroanLzZyfnxzBDKvR7iGj9TkMkP
+bYpOsXrul1E6ej91oH+Cl49Cx92Iyj7IHNLFXUr+wjYIfP9pJcJg9jQ1yRVXKz3H
+2Bv05mUkXTbPNlrU9ZQ2dYaRvbbbfKgy8dqjKcGpnlRMPfVjgsNOFyYfDMgaqKNf
+dTqVjvDWcNP1mYOMnnyP3jhxK8LShQoqpZS9gjNuzDVrIBL82QQ3mfWRFg4EPDCZ
+QSq7ZsWykidHAzKefYd6GA8x5vTdRI0NrVETe4DXp7RiBbxt87qT/qKSwTBpXmk5
+0wIDAQAB
+-----END PUBLIC KEY-----

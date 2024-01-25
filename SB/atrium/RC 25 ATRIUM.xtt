@@ -1,0 +1,21 @@
+===========  RC 25 ==========
+Salle RC-25 (équipe SÉCU) : dianetorres et kelsey08
+INFO PANNEAU : CHANGENT A CHAQUE DECO RECO
+
+- dianetorres: 305724ff6bbb3dd2dfef02d40b283e91a2766de68eab18df68fdd75741c1d32d3d6c6fdb2983a58da32efcb849d966043ea4f602e5ba400c097ea5de27f3735300689c9ba471764cc3e0833f2a0341aafe817e3327e6c7a56f3c0a3643d3e63d83b1bc50879f88927ab524fb660c2147d7252cfc8a46187059aae2ea028756071a491d47f8ea114a52bf797a0010cfaf61cb38ef7365e37b1bbfeb1da10c47aa082a5f6b0f5c29059320600f601e15e8cbaec3af977ff91f8910a88dd5b8267f87525cb9bd3899935c8e73b8c9228bac05b2845aa75572926b89acdbc81f3118f348bc4ed92b00a4163951c5037156a0d7b9b2889504ec1cb80d7fd51f37f308
+- kelsey08: 4fc8886e96c49e69e685a34ca2b682b9742dd0007ac7de26ccbeedebc88b2ad20773d73ec81780200a7e1234268b8f5029f00e1a9808cce6ef582977587b1dc89758546ca58cda0fd2ae9e2c2ca4dcd77b0533b9d54d595c75f0646683523709fecfaf1d4bd1e9cd32c2587570d54b5edbc7fcb84cfd53c451a02a571bdafc9e1ad5058bc0bfbea66fa5a6a08f638d3eeccda1eeb155e2188c8d587ed7eddc6e4d5148ed851be87fbec9fb75646c7fcaa6b7b2d0ff29e2b78620195710b8a2c6c3bad4f84ad8337d77bf67ea86c0d37ffdf53c7822d9d82938d335421cf3eaac52c793cec67c34ae030985a73f8b58910b32d43bc577f9430ecefff04dd06eb9
+
+>>> conseil digicode
+Le panneau en liège montre un message chiffré par les deux clefs publiques.
+Ce serait sûrement utile de le déchiffrer.  Mais cette fois, aucune clef
+secrète n'est opportunément disponible.
+
+Ceci est cepdendant possible car les deux clefs publiques ont le même N.
+La formule magique est : ``CRT dans les exposants''.
+
+En clair, cherchez une relation de Bezout u*e1 + v*e2 == 1.
+
+Après, vous avez c1 == m**e1 mod N et c2 == m**e2 mod N.  Par conséquent,
+c1**u * c2**v == m**(u*e1 + v*e2) == m mod N.  Et boum.
+
+Rappel : m**(-42) == (m**42)**(-1) == (m**(-1))**42 mod N
